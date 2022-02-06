@@ -20,14 +20,17 @@
 
 <h1 class="text-center">Editar Mi perfil</h1>
 
+{{-- {{$perfil}} --}}
 <div class="row justify-content-center mt-5">
     <div class="col-md-10 bg-white p-3">
-        <form action="{{ route('') }}">
+        <form action="{{ route('perfiles.update',$perfil->id)}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" id="nombre" class="form-control @error('nombre') is-invalid @enderror"
-                    placeholder="nombre Receta" {{-- value=" {{ old('nombre') }}" --}}>
+                    placeholder="nombre Receta" value="{{ $perfil->usuario->name }}">
 
                 @error('nombre')
                 <span class="invalid-feedback d-block" role="alert">
@@ -39,7 +42,7 @@
             <div class="form-group">
                 <label for="url">Tu sitio web</label>
                 <input type="text" name="url" id="url" class="form-control @error('url') is-invalid @enderror"
-                    placeholder="url Receta" {{-- value=" {{ old('url') }}" --}}>
+                    placeholder="url Receta" value=" {{ $perfil->usuario->url }}">
 
                 @error('url')
                 <span class="invalid-feedback d-block" role="alert">
@@ -50,7 +53,7 @@
 
             <div class="form-group mt-3">
                 <label for="biografia">biografia</label>
-                <input type="hidden" name="biografia" id="biografia" value="{{ old('biografia') }}">
+                <input type="hidden" name="biografia" id="biografia" value="{{ $perfil->biografia }}">
                 <trix-editor class="form-control @error('biografia') is-invalid @enderror" input="biografia">
                 </trix-editor>
 
@@ -70,7 +73,7 @@
 
                 <div class="mt-4">
                     <p>Imagen actual</p>
-                    {{-- <img src="{{ asset(" /storage/$receta->imagen")}}" alt="" style="width: 300px"> --}}
+                    <img src="{{ asset("/storage/$perfil->imagen")}}" alt="" style="width: 300px">
                 </div>
 
                 @error('imagen')
@@ -83,6 +86,9 @@
             </div>
 
 
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Actualizar Perfil">
+            </div>
 
 
 
