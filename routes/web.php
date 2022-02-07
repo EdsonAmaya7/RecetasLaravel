@@ -4,6 +4,7 @@ use App\Models\Receta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikesController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RecetaController;
 
@@ -34,7 +35,12 @@ Route::get('/recetas/{receta}/edit',[RecetaController::class,'edit'])->name('rec
 Route::put('/recetas/{receta}',[RecetaController::class,'update'])->name('recetas.update');
 Route::delete('/recetas/{receta}',[RecetaController::class,'destroy'])->name('recetas.destroy');
 
-// Route::get('/perfiles/{perfil}', [PerfilController::class,'show'])->name('perfil.show');
+// Route::resource('/recetas',RecetaController::class);
+
+
 Route::get('/perfiles/{perfil}',[PerfilController::class,'show'])->name('perfiles.show');
 Route::get('/perfiles/{perfil}/edit',[PerfilController::class,'edit'])->name('perfiles.edit');
 Route::put('/perfiles/{perfil}',[PerfilController::class,'update'])->name('perfiles.update');
+
+//almacena los like de las recetas
+Route::put('/recetas/{receta}',[LikesController::class,'update'])->name('likes.update');

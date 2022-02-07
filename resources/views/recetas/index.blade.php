@@ -2,7 +2,7 @@
 
 @section('botones')
 
-<a href="{{ route('recetas.create') }}" class="btn btn-primary mr-2 text-white">Crear receta</a>
+@include('ui.navegacion')
 
 @endsection
 
@@ -34,7 +34,7 @@
                         <input type="submit" class=" w-100 btn btn-danger mb-1 d-block" name="" id=""
                         value="Elminar &times;">
                     </form> -->
-                    <eliminar-receta receta-id= {{$receta->id}} ></eliminar-receta>
+                    <eliminar-receta receta-id={{$receta->id}} ></eliminar-receta>
                     <a href="{{ route('recetas.edit',$receta->id ) }}" class="btn btn-dark mb-1 d-block">Editar</a>
                     <a href="{{ route('recetas.show',$receta->id) }}" class="btn btn-success mb-1 d-block">Ver</a>
                 </td>
@@ -42,5 +42,8 @@
             @endforeach
         </tbody>
     </table>
+    <div class="col-12-mt-4 justify-content-center d-flex">
+        {{ $recetas->links() }}
+    </div>
 </div>
 @endsection

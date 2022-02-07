@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "jquery": "^3.6.0",
         "moment": "^2.29.1",
         "vue-sweetalert2": "^5.0.2"
     }

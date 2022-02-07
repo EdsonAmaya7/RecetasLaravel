@@ -10,6 +10,7 @@ use App\Models\CategoriaReceta;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
+
 class RecetaController extends Controller
 {
 
@@ -26,8 +27,13 @@ class RecetaController extends Controller
     public function index()
     {
         // auth()->user()->recetas->dd();
-        $recetas = auth()->user()->recetas;
+        // antiguo metodo con relaciones aqui no funciona la paginacion
+        // $recetas = auth()->user()->recetas;
+        // return view('recetas.index', compact('recetas'));
 
+        // recetas con paginacion
+        $usuario = auth()->user()->id;
+        $recetas = Receta::where('user_id',$usuario)->paginate(2);
         return view('recetas.index', compact('recetas'));
     }
 
@@ -119,6 +125,7 @@ class RecetaController extends Controller
     public function edit(Receta $receta)
     {
         //
+        $this->authorize('view',$receta);
         $categorias = CategoriaReceta::all(['id','nombre']);
         return view('recetas.edit', compact('categorias','receta'));
     }

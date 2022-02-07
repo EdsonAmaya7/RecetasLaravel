@@ -35,3 +35,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //instalar momentjs
 
 window.moment = require('moment');
+
+//jquery
+window.$ = require('jquery');
