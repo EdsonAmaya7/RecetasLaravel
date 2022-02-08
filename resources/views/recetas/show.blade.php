@@ -3,7 +3,9 @@
 
 @section('botones')
 <a href="{{ route('recetas.index') }}" class="btn btn-outline-primary mr-2 font-weight-bold text-uppercase">
-    <svg class="w-6 h-6 icono" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path></svg>
+    <svg class="w-6 h-6 icono" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path>
+    </svg>
     Volver</a>
 @endsection
 
@@ -32,7 +34,7 @@
         <p>
             <span class="font-weight-bold text-primary">Fecha</span>
             @php
-                $fecha = $receta->created_at;
+            $fecha = $receta->created_at;
 
             @endphp
             <fecha-receta fecha="{{ $fecha }}"></fecha-receta>
@@ -50,8 +52,10 @@
         </div>
 
 
+        <div class="justify-content-center row text-center">
+            <like-button receta-id="{{ $receta->id }}" like="{{ $like }}" likes="{{ $likes }}"></like-button>
+        </div>
 
-        <like-button receta-id="{{ $receta->id }}"></like-button>
     </div>
 </article>
 @endsection
