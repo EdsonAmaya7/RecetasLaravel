@@ -14,21 +14,25 @@
 
 {{-- <h2>{{ $receta }}</h2> --}}
 
-<article class="contenido-receta">
+<article class="contenido-receta bg-white p-5 shadow">
     <h1 class="text-center mb-4">{{ $receta->titulo }} </h1>
 
-    <div class="receta-meta mt-2">
+    <div class="receta-meta mt-3">
         <div class="imagen-receta">
-            <img src={{ asset("/storage/$receta->imagen") }} class="w-50" alt="a">
+            <img src={{ asset("/storage/$receta->imagen") }} class="w-100" alt="a">
         </div>
-        <p>
-            <span class="font-weight-bold text-primary">Escrito en:</span>
+        <p class="mt-4">
+            <span class="font-weight-bold text-primary mt-3">Escrito en:</span>
+            <a href="{{ route('categorias.show', $receta->categoria->id) }}" class="text-dark">
             {{ $receta->categoria->nombre}}
+        </a>
         </p>
 
         <p>
             <span class="font-weight-bold text-primary">Autor</span>
+            <a href="{{ route('perfiles.show', $receta->autor->id) }}" class="text-dark">
             {{ $receta->autor->name}}
+            </a>
         </p>
 
         <p>

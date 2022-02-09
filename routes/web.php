@@ -38,6 +38,8 @@ Route::delete('/recetas/{receta}',[RecetaController::class,'destroy'])->name('re
 
 // Route::resource('/recetas',RecetaController::class);
 
+Route::get('/buscar',[RecetaController::class,'search'])->name('buscar.show');
+
 Route::get('/categoria/{categoriaReceta}',[CategoriasController::class,'show'])->name('categorias.show');
 
 Route::get('/perfiles/{perfil}',[PerfilController::class,'show'])->name('perfiles.show');
