@@ -51,7 +51,6 @@ class RecetaController extends Controller
 
         $categorias = CategoriaReceta::all(['id','nombre']);
 
-
         return view('recetas.create',compact('categorias'));
     }
 

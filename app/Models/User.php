@@ -54,6 +54,7 @@ class User extends Authenticatable
 
         });
     }
+    
     public function recetas(){
 
         return $this->hasMany(Receta::class);
